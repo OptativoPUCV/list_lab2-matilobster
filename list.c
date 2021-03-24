@@ -45,18 +45,24 @@ void * firstList(List * list) {
 
 void * nextList(List * list) {
   if(!list->current) return NULL;
-  //Node * aux = list->current;
   if(list->current == list->tail) return NULL;
   list->current = list->current->next;
   return (void *) list->current->data;
 }
 
 void * lastList(List * list) {
-    return NULL;
+  if(!list->current) return NULL;
+  list->current = list->tail;
+  
+  return (void *) list->current->data;;
 }
 
 void * prevList(List * list) {
-    return NULL;
+  if(!list->current) return NULL;
+  if(list->current == list->head) return NULL;
+  list->current = list->current->prev;
+
+  return (void *) list->current->data;
 }
 
 void pushFront(List * list, const void * data) {
