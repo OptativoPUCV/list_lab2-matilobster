@@ -117,13 +117,12 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    const void *aux = list->current->data;
-    if (list->current->prev != NULL) list->current->prev = list->current->next;
-    else list->head = list->current->next;
-    if (list->current->next != NULL) list->current->next->prev = list->current->prev;
-
+    Node * aux = list->current;
+    if (aux->prev != NULL) aux->prev->next = aux->next;
+    else list->head = aux->next;
+    if (aux->next != NULL) aux->next->prev = aux->prev;
     
-    return (void *) aux;
+    return (void *) aux->data;
 }
 
 void cleanList(List * list) {
