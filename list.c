@@ -92,7 +92,7 @@ void pushCurrent(List * list, const void * data) {
   if(list->current == list->tail)
   {
     nuevo->prev = list->current;
-    list->current->next = nuevo->prev;
+    list->current->next = nuevo;
     nuevo->next = NULL;
     list->tail = nuevo;
     
